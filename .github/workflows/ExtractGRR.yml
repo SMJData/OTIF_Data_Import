@@ -1,0 +1,27 @@
+name: GRR Extraction
+
+on:
+  workflow_dispatch:
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run extraction
+        env:
+          EPICOR_USER: ${{ secrets.EPICOR_USER }}
+          EPICOR_PASS: ${{ secrets.EPICOR_PASS }}
+          SUPABASE_CONN: ${{ secrets.SUPABASE_CONN }}
+        run: python pipelines/extract_product_listing.py

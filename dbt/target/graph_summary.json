@@ -1,0 +1,1 @@
+{"_invocation_id": "fc56f045-1c09-40c3-9d6c-75f0dde923b1", "linked": {"0": {"name": "source.smj_bi.raw.Production", "type": "source", "succ": [2]}, "1": {"name": "model.smj_bi.fct_oee", "type": "model"}, "2": {"name": "model.smj_bi.stg_production", "type": "model", "succ": [1]}}}

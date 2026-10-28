@@ -49,21 +49,14 @@ DB_CHUNK_SIZE = 1000
 # ============================================================================
 
 BAQ_CONFIG = [
-    # {"baq": "NRLSEXP_V9_SMQ22026", "table": "NRLSEXP_V9_SMQ22026"},
-    # {"baq": "NRLSEXP_V9_SMQ32026", "table": "NRLSEXP_V9_SMQ32026"},
-
-    {
-        "baq": "NRLSEXP_V9_SMQ42026",
-        "table": "NRLSEXP_V9_SMQ42026"
-    },
-    {
-        "baq": "NRLSEXP_V9_SMQ12027",
-        "table": "NRLSEXP_V9_SMQ12027"
-    },
-
-    # {"baq": "NRLSEXP_V9_SMQ22027", "table": "NRLSEXP_V9_SMQ22027"},
-    # {"baq": "NRLSEXP_V9_SMQ32027", "table": "NRLSEXP_V9_SMQ32027"},
-    # {"baq": "NRLSEXP_V9_SMQ42027", "table": "NRLSEXP_V9_SMQ42027"},
+    # Export orders: OTIF tracking (Late, Early, Ontime).
+    {"baq": "OntimeDelivery", "table": "ontime_delivery"},
+    # Export orders: Ready to Invoice, All Orders, Cancelled Orders,
+    # Invoiced Orders, Shipped Orders but not invoiced, Open Orders.
+    {"baq": "SupplyChain", "table": "supply_chain"},
+    # Week-wise export sales orders by part, description, brand,
+    # pack size, and case configuration.
+    {"baq": "z_SO02-SC", "table": "z_so02_sc"},
 ]
 
 
@@ -615,3 +608,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

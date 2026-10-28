@@ -1,4 +1,4 @@
-name: GRR Extraction
+name: Epicor Export Orders Extract
 
 on:
   workflow_dispatch:
@@ -19,9 +19,10 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run extraction
+      - name: Extract export order BAQs
         env:
           EPICOR_USER: ${{ secrets.EPICOR_USER }}
           EPICOR_PASS: ${{ secrets.EPICOR_PASS }}
           SUPABASE_CONN: ${{ secrets.SUPABASE_CONN }}
-        run: python pipelines/extract_product_listing.py
+        run: python pipelines/extract_export_orders.py
+

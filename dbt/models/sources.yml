@@ -1,43 +1,13 @@
 version: 2
 
 sources:
-  - name: raw
-    schema: raw
-    description: "Raw data loaded directly from Epicor ERP via OData BAQ API"
+  - name: export_orders
+    schema: public
+    description: "Export order data from Epicor OData BAQs. Export scope is defined in the BAQs."
     tables:
-      - name: Production
-        identifier: Production
-        description: "Raw production efficiency data from Epicor BAQ: MfgProdLineEfficiencyV2"
-        columns:
-          - name: labordtl_jobnum
-            description: "Job number"
-          - name: labordtl_resourcegrpid
-            description: "Resource group ID — used to derive Line and Division"
-          - name: labordtl_createdby
-            description: "User who created the labor detail record"
-          - name: labordtl_clockindate
-            description: "Clock-in date as text — cast to date in staging"
-          - name: labordtl_dspclockintime
-            description: "Display clock-in time (HH:MM) — used for shift derivation"
-          - name: labordtl_dspclockouttime
-            description: "Display clock-out time (HH:MM) — 24:00 handled in staging"
-          - name: calculated_plannedprodtime
-            description: "Planned production time in minutes"
-          - name: calculated_planneddowntime
-            description: "Planned downtime in minutes"
-          - name: calculated_actualgoodqapassed
-            description: "Actual good QA passed quantity"
-          - name: calculated_expectedproduction
-            description: "Expected production quantity"
-          - name: calculated_completedcasesqty
-            description: "Completed cases quantity"
-          - name: calculated_machinespeed
-            description: "Machine speed"
-          - name: part_commercialbrand
-            description: "Commercial brand name"
-          - name: part_commercialsize1
-            description: "Brand pack size (e.g. 500ml)"
-          - name: part_commercialsize2
-            description: "Configuration (e.g. X24)"
-          - name: rowident
-            description: "Unique row identifier from Epicor"
+      - name: ontime_delivery
+        description: "OntimeDelivery: OTIF tracking for export orders (Late, Early, Ontime)."
+      - name: supply_chain
+        description: "SupplyChain: export order tracking (Ready to Invoice, All Orders, Cancelled Orders, Invoiced Orders, Shipped Orders but not invoiced, Open Orders)."
+      - name: z_so02_sc
+        description: "z_SO02-SC: week-wise export sales orders by part, description, brand, pack size, and case configuration."
